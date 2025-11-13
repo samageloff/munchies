@@ -1,4 +1,4 @@
-import { Grid, Heading, Stack, Text } from "@chakra-ui/react";
+import { Grid, Heading, Stack, Tag, Text } from "@chakra-ui/react";
 import { Card } from "../ui/Card";
 
 export async function RestaurantsList({ slug }: { slug?: string | null }) {
@@ -24,7 +24,14 @@ export async function RestaurantsList({ slug }: { slug?: string | null }) {
           <Text>No restaurants found</Text>
         ) : (
           restaurantData?.map((restaurant: any) => (
-            <Card key={restaurant.id}>{restaurant.name}</Card>
+            <Card key={restaurant.id} height={{ base: "100px", md: "200px" }}>
+              <Tag.Root width="fit-content">
+                <Tag.Label>
+                  {restaurant.delivery_time_minutes} minutes
+                </Tag.Label>
+              </Tag.Root>
+              {restaurant.name}{" "}
+            </Card>
           ))
         )}
       </Grid>
