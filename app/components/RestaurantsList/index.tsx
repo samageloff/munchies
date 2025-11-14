@@ -5,7 +5,7 @@ export async function RestaurantsList({ slug }: { slug?: string | null }) {
   const url = `${process.env.API_URL}/restaurants`;
 
   const restaurants = await fetch(url);
-  const data = await restaurants.json();
+  const { data } = await restaurants.json();
 
   let restaurantData = data?.restaurants;
 
