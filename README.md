@@ -21,3 +21,12 @@ yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Notes (places for improvement):
+
+- No loading states
+- Selected/Active state
+- Missing TypeScript interfaces
+- Direct API calls bypass caching (accidental)
+  - Error in mapping in RestaurantsList and FoodCategories
+- No error boundaries 
