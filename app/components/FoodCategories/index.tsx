@@ -4,7 +4,7 @@ import { Card } from "../ui/Card";
 
 export async function FoodCategories({ slim }: { slim?: boolean }) {
   const foodCategories = await fetch(`${process.env.API_URL}/filter`);
-  const data = await foodCategories.json();
+  const { data } = await foodCategories.json();
 
   return (
     <Grid
