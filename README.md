@@ -24,6 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Notes (places for improvement):
 
+- UI/UX (all around, matching of Figma, etc.)
 - No loading states
 - Selected/Active state
 - Missing TypeScript interfaces
