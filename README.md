@@ -1,4 +1,4 @@
-**Hi team (Rafal, Conrad):**
+**Hi team**
 
 Please find my code assessment below. 
 
