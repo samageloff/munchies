@@ -1,7 +1,12 @@
-import { getCacheEntry, getCacheKey, setCacheEntry } from "@/app/lib/cache";
+import {
+  getCache,
+  getCacheEntry,
+  getCacheKey,
+  setCacheEntry,
+} from "@/app/lib/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-const EXTERNAL_API_BASE = process.env.API_URL;
+const EXTERNAL_API_BASE = process.env.PROXY_URL;
 
 async function proxyRequest(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -11,12 +16,22 @@ async function proxyRequest(request: NextRequest) {
     queryString ? `?${queryString}` : ""
   }`;
 
+  console.table({
+    searchParams,
+    apiPath,
+    queryString,
+    targetUrl,
+  });
+
+  debugger;
+
   // Only cache GET requests
   if (request.method === "GET") {
     const query = searchParams.get("query");
     const cacheKey = getCacheKey(`${apiPath}:${query || "default"}`);
     const cached = getCacheEntry(cacheKey);
 
+    console.log(getCache());
     if (cached && cached.expiresAt > Date.now()) {
       console.log(`Cache hit for ${apiPath}`);
       return NextResponse.json({ source: "cache", data: cached.data });
